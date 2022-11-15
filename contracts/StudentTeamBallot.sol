@@ -160,6 +160,10 @@ contract StudentTeamBallot {
         return teamVoteTotals;
     }
 
+    function getVFS() public view returns (address[] memory) {
+        return vfs;
+    }
+
     /** 
      * @dev Calls winningProposal() function to get the index of the winner contained in the proposals array and then
      * @return winnerName_ the name of the winner
