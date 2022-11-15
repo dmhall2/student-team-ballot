@@ -146,6 +146,11 @@ contract StudentTeamBallot {
 
     function voteTotals() public view returns (int[8] memory)
     {
+        require(
+            msg.sender == professor,
+            "Only professor can see vote totals"
+        );
+
         int[8] memory teamVoteTotals = [
             teams[0].voteCount,
             teams[1].voteCount,
@@ -161,6 +166,12 @@ contract StudentTeamBallot {
     }
 
     function getVFS() public view returns (address[] memory) {
+        
+        require(
+            msg.sender == professor,
+            "Only professor can see VFS"
+        );        
+        
         return vfs;
     }
 
