@@ -106,8 +106,8 @@ contract StudentTeamBallot {
     function vote(int teamNumber) public {
         Voter storage sender = voters[msg.sender];
         require(!sender.voted, "Already voted.");
-        require(teamNumber < 0, "Invalid teamNumber");
-        require(teamNumber > 8, "Invalid teamNumber");
+        require(teamNumber >= 0, "Invalid teamNumber");
+        require(teamNumber <= 7, "Invalid teamNumber");
 
         sender.voted = true;
         sender.vote = teamNumber;
