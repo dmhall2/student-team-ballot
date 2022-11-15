@@ -25,6 +25,7 @@ contract StudentTeamBallot {
 
     address public professor;
     address public ta;
+    address[] public vfs; 
 
     bytes32[] public teamNames = [
         bytes32("Core4"), // Team 0
@@ -120,6 +121,7 @@ contract StudentTeamBallot {
         if (teamNumber == sender.team) {
             sender.vfst = true;
             teams[uint(teamNumber)].voteCount -= 1;
+            vfs.push(msg.sender);
         } else {
             sender.vfst = false;
             teams[uint(teamNumber)].voteCount += 1;
@@ -140,6 +142,22 @@ contract StudentTeamBallot {
                 winningTeam_ = t;
             }
         }
+    }
+
+    function voteTotals() public view returns (int[8] memory)
+    {
+        int[8] memory teamVoteTotals = [
+            teams[0].voteCount,
+            teams[1].voteCount,
+            teams[2].voteCount,
+            teams[3].voteCount,
+            teams[4].voteCount,
+            teams[5].voteCount,
+            teams[6].voteCount,
+            teams[7].voteCount          
+        ];
+
+        return teamVoteTotals;
     }
 
     /** 
