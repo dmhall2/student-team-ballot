@@ -13,6 +13,7 @@ contract StudentTeamBallot {
         int vote;   // index of the voted proposal
         bool vfst;
         int team;
+        bool live;
     }
 
     struct Team {
@@ -50,7 +51,8 @@ contract StudentTeamBallot {
             voted:false,
             vote: -1,
             vfst:false,
-            team: -1
+            team: -1,
+            live: true
         });
 
         for (uint t = 0; t < teamNames.length; t++) {
@@ -71,7 +73,8 @@ contract StudentTeamBallot {
             voted:false,
             vote: -1,
             vfst:false,
-            team: -1
+            team: -1,
+            live: true
         });
     }
 
@@ -95,7 +98,8 @@ contract StudentTeamBallot {
             voted: false,
             vote: -1,
             vfst: false,
-            team: teamNumber
+            team: teamNumber,
+            live: true
         });        
     }
 
@@ -105,6 +109,7 @@ contract StudentTeamBallot {
      */
     function vote(int teamNumber) public {
         Voter storage sender = voters[msg.sender];
+        require(sender.live, "Not a live address");
         require(!sender.voted, "Already voted.");
         require(teamNumber >= 0, "Invalid teamNumber");
         require(teamNumber <= 7, "Invalid teamNumber");
