@@ -30,7 +30,7 @@ contract StudentTeamBallot {
     bytes32[] public teamNames = [
         bytes32("Black Swans"), // Team 0
         bytes32("Group 1"), // Team 1
-        bytes32("Meme Team"), // Team 2
+        bytes32("Meme Team") // Team 2
     ];  
 
     mapping(address => Voter) public voters;
@@ -146,7 +146,7 @@ contract StudentTeamBallot {
             "Only professor can see vote totals"
         );
 
-        int[8] memory teamVoteTotals = [
+        int[3] memory teamVoteTotals = [
             teams[0].voteCount,
             teams[1].voteCount,
             teams[2].voteCount       
