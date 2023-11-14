@@ -139,7 +139,7 @@ contract StudentTeamBallot {
         }
     }
 
-    function voteTotals() public view returns (int[8] memory)
+    function voteTotals() public view returns (int[3] memory)
     {
         require(
             msg.sender == professor,
