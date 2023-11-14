@@ -28,14 +28,9 @@ contract StudentTeamBallot {
     address[] public vfs; 
 
     bytes32[] public teamNames = [
-        bytes32("Core4"), // Team 0
-        bytes32("Maroon Traders"), // Team 1
-        bytes32("RP Squad"), // Team 2
-        bytes32("Stonk X"), // Team 3
-        bytes32("TBD"),  // Team 4
-        bytes32("The Intelligent Investors"), // Team 5
-        bytes32("to{sigma}"), // Team 6 
-        bytes32("Unnamed Group") // Team 7
+        bytes32("Black Swans"), // Team 0
+        bytes32("Group 1"), // Team 1
+        bytes32("Meme Team"), // Team 2
     ];  
 
     mapping(address => Voter) public voters;
@@ -113,7 +108,7 @@ contract StudentTeamBallot {
         require(sender.live, "Not a live address");
         require(!sender.voted, "Already voted.");
         require(teamNumber >= 0, "Invalid teamNumber");
-        require(teamNumber <= 7, "Invalid teamNumber");
+        require(teamNumber <= 2, "Invalid teamNumber");
 
         sender.voted = true;
         sender.vote = teamNumber;
@@ -154,12 +149,7 @@ contract StudentTeamBallot {
         int[8] memory teamVoteTotals = [
             teams[0].voteCount,
             teams[1].voteCount,
-            teams[2].voteCount,
-            teams[3].voteCount,
-            teams[4].voteCount,
-            teams[5].voteCount,
-            teams[6].voteCount,
-            teams[7].voteCount          
+            teams[2].voteCount       
         ];
 
         return teamVoteTotals;
