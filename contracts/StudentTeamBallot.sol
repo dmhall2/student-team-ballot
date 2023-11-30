@@ -130,7 +130,7 @@ contract StudentTeamBallot {
     function winningTeam() public view
             returns (uint winningTeam_)
     {
-        int winningVoteCount = 0;
+        int winningVoteCount = -100;
         for (uint t = 0; t < teams.length; t++) {
             if (teams[t].voteCount > winningVoteCount) {
                 winningVoteCount = teams[t].voteCount;
